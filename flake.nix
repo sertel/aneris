@@ -14,7 +14,7 @@
   };
   outputs = { self, nixpkgs, flake-utils, trillium, actris, coq-record-update, ... }: let
 
-    aneris = { lib, mkCoqDerivation, coq, stdpp, iris, paco }: mkCoqDerivation rec {
+    aneris = { lib, mkCoqDerivation, coq, stdpp, iris, paco, trillium, coq-record-update, actris }: mkCoqDerivation rec {
       pname = "aneris";
       propagatedBuildInputs = [ stdpp iris paco trillium coq-record-update actris ];
       defaultVersion = "0.0.1";
@@ -33,7 +33,11 @@
   in flake-utils.lib.eachDefaultSystem (system: let
     pkgs = import nixpkgs {
       inherit system;
-      overlays = [ self.overlays.default ];
+      overlays = [ self.overlays.default
+                   trillium.overlays.default
+                   actris.overlays.default
+                   coq-record-update.overlays.default
+                 ];
     };
   in {
     devShells = {
