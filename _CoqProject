@@ -1,17 +1,17 @@
 -Q aneris aneris
 
--Q external/stdpp/stdpp stdpp
--Q external/stdpp/stdpp_unstable stdpp.unstable
--Q external/iris/iris iris
--Q external/trillium/trillium trillium
--Q external/record-update/src RecordUpdate
--Q external/paco/src Paco
--Q external/actris/theories actris
+#-Q external/stdpp/stdpp stdpp
+#-Q external/stdpp/stdpp_unstable stdpp.unstable
+#-Q external/iris/iris iris
+#-Q external/trillium/trillium trillium
+#-Q external/record-update/src RecordUpdate
+#-Q external/paco/src Paco
+#-Q external/actris/theories actris
 
--Q external/iris/iris_deprecated iris.deprecated
--Q external/iris/iris_unstable iris.unstable
--Q external/iris/iris_heap_lang iris.heap_lang
--Q external/trillium/fairis trillium.fairness
+#-Q external/iris/iris_deprecated iris.deprecated
+#-Q external/iris/iris_unstable iris.unstable
+#-Q external/iris/iris_heap_lang iris.heap_lang
+#-Q external/trillium/fairis trillium.fairness
 
 -arg -w -arg -notation-overridden
 -arg -w -arg -redundant-canonical-projection
