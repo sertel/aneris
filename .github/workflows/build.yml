@@ -5,9 +5,9 @@ on:
     branches:
       - master
   pull_request:
-  schedule:
+  #schedule:
     # every day at 9am UTC
-    - cron: "0 9 * * *"
+ #   - cron: "0 9 * * *"
 
 jobs:
   build:
