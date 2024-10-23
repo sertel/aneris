@@ -46,18 +46,21 @@
       devShells = {
         aneris = self.packages.${system}.aneris;
         default = self.packages.${system}.aneris;
-        vscodeShell = [
-          pkgs.coqPackages_8_19.aneris
-          pkgs.coqPackages_8_19.vscode-language-server
-          ];
+        vscodeShell = pkgs.mkShell {
+          name = "vscode-shell";
+          paths = [
+             self.packages.${system}.aneris
+            pkgs.coqPackages_8_19.vscoq-language-server
+              ];
+          };
       };
-      
+
       packages = {
         aneris = pkgs.coqPackages_8_19.aneris ;
         default = self.packages.${system}.aneris;
         vscodeShell = [
-          pkgs.coqPackages_8_19.aneris
-          pkgs.coqPackages_8_19.vscode-language-server
+           self.packages.${system}.aneris
+            pkgs.coqPackages_8_19.vscoq-language-server
           ];
       };
     }) // {
