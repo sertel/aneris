@@ -30,26 +30,37 @@
       };
     };
 
-  in flake-utils.lib.eachDefaultSystem (system: let
-    pkgs = import nixpkgs {
-      inherit system;
-      overlays = [ self.overlays.default
-                   trillium.overlays.default
-                   actris.overlays.default
-                   coq-record-update.overlays.default
-                 ];
-    };
-  in {
-    devShells = {
-      aneris = self.packages.${system}.aneris;
-      default = self.packages.${system}.aneris;
-    };
-
-    packages = {
-      aneris = pkgs.coqPackages_8_19.aneris;
-      default = self.packages.${system}.aneris;
-    };
-  }) // {
+  in
+    flake-utils.lib.eachDefaultSystem (
+    system:
+    let
+        pkgs = import nixpkgs {
+          inherit system;
+          overlays = [ self.overlays.default
+                      trillium.overlays.default
+                      actris.overlays.default
+                      coq-record-update.overlays.default
+                    ];
+        };
+    in {
+      devShells = {
+        aneris = self.packages.${system}.aneris;
+        default = self.packages.${system}.aneris;
+        vscodeShell = [
+          pkgs.coqPackages_8_19.aneris
+          pkgs.coqPackages_8_19.vscode-language-server
+          ];
+      };
+      
+      packages = {
+        aneris = pkgs.coqPackages_8_19.aneris ;
+        default = self.packages.${system}.aneris;
+        vscodeShell = [
+          pkgs.coqPackages_8_19.aneris
+          pkgs.coqPackages_8_19.vscode-language-server
+          ];
+      };
+    }) // {
     # NOTE: To use this flake, apply the following overlay to nixpkgs and use
     # the injected package from its respective coqPackages_VER attribute set!
     overlays.default = final: prev: let
