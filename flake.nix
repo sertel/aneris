@@ -11,8 +11,12 @@
 
     coq-record-update.url="github:tchajed/coq-record-update";
     coq-record-update.inputs.nixpkgs.follows="nixpkgs";
+
+    vscoq.url="github:coq/vscoq?tag=v2.2.0";
+    vscoq.inputs.nixpkgs.follows="nixpkgs";
+
   };
-  outputs = { self, nixpkgs, flake-utils, trillium, actris, coq-record-update, ... }: let
+  outputs = { self, nixpkgs, flake-utils, trillium, actris, coq-record-update, vscoq, ... }: let
 
     aneris = { lib, mkCoqDerivation, coq, stdpp, iris, paco, trillium, coq-record-update, actris }: mkCoqDerivation rec {
       pname = "aneris";
@@ -36,7 +40,8 @@
     let
         pkgs = import nixpkgs {
           inherit system;
-          overlays = [ self.overlays.default
+          overlays = [
+                      self.overlays.default
                       trillium.overlays.default
                       actris.overlays.default
                       coq-record-update.overlays.default
@@ -46,22 +51,16 @@
       devShells = {
         aneris = self.packages.${system}.aneris;
         default = self.packages.${system}.aneris;
-        vscodeShell = pkgs.mkShell {
+        vscodeShell = pkgs.mkShellNoCC {
           name = "vscode-shell";
-          paths = [
-             self.packages.${system}.aneris
-            pkgs.coqPackages_8_19.vscoq-language-server
-              ];
+          inputsFrom = [ self.packages.${system}.aneris ];
+          packages = [ vscoq.packages.${system}.vscoq-language-server-coq-8-19 ];
           };
       };
 
       packages = {
         aneris = pkgs.coqPackages_8_19.aneris ;
         default = self.packages.${system}.aneris;
-        vscodeShell = [
-           self.packages.${system}.aneris
-            pkgs.coqPackages_8_19.vscoq-language-server
-          ];
       };
     }) // {
     # NOTE: To use this flake, apply the following overlay to nixpkgs and use
