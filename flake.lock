@@ -22,6 +22,29 @@
         "type": "github"
       }
     },
+    "coq-master": {
+      "inputs": {
+        "flake-utils": "flake-utils_5",
+        "nixpkgs": [
+          "vscoq",
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1721904741,
+        "narHash": "sha256-WlJJXr7+m7wBATffAMJu1ZX1/7q4OpzkZh7gxIRcMIc=",
+        "owner": "coq",
+        "repo": "coq",
+        "rev": "b42eb84e4422dcf428d46553f002c728f705a6a9",
+        "type": "github"
+      },
+      "original": {
+        "owner": "coq",
+        "repo": "coq",
+        "rev": "b42eb84e4422dcf428d46553f002c728f705a6a9",
+        "type": "github"
+      }
+    },
     "coq-record-update": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -115,6 +138,42 @@
         "type": "github"
       }
     },
+    "flake-utils_5": {
+      "inputs": {
+        "systems": "systems_5"
+      },
+      "locked": {
+        "lastModified": 1681202837,
+        "narHash": "sha256-H+Rh19JDwRtpVPAWp64F+rlEtxUWBAQW28eAi3SRSzg=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "cfacdce06f30d2b68473a46042957675eebb3401",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
+    "flake-utils_6": {
+      "inputs": {
+        "systems": "systems_6"
+      },
+      "locked": {
+        "lastModified": 1710146030,
+        "narHash": "sha256-SZ5L6eA7HJ/nmkzGG7/ISclqe6oZdOZTNoesiInkXPQ=",
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "rev": "b1d9ab70662946ef0850d488da1c9019f3a9752a",
+        "type": "github"
+      },
+      "original": {
+        "owner": "numtide",
+        "repo": "flake-utils",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1725260165,
@@ -137,7 +196,8 @@
         "coq-record-update": "coq-record-update",
         "flake-utils": "flake-utils_3",
         "nixpkgs": "nixpkgs",
-        "trillium": "trillium"
+        "trillium": "trillium",
+        "vscoq": "vscoq"
       }
     },
     "systems": {
@@ -200,6 +260,36 @@
         "type": "github"
       }
     },
+    "systems_5": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
+    "systems_6": {
+      "locked": {
+        "lastModified": 1681028828,
+        "narHash": "sha256-Vy1rq5AaRuLzOxct8nz4T6wlgyUR7zLU309k9mBC768=",
+        "owner": "nix-systems",
+        "repo": "default",
+        "rev": "da67096a3b9bf56a91d16901293e51ba5b49a27e",
+        "type": "github"
+      },
+      "original": {
+        "owner": "nix-systems",
+        "repo": "default",
+        "type": "github"
+      }
+    },
     "trillium": {
       "inputs": {
         "flake-utils": "flake-utils_4",
@@ -218,6 +308,28 @@
       "original": {
         "owner": "sertel",
         "repo": "trillium",
+        "type": "github"
+      }
+    },
+    "vscoq": {
+      "inputs": {
+        "coq-master": "coq-master",
+        "flake-utils": "flake-utils_6",
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1729319349,
+        "narHash": "sha256-IG1R6fDLU2C2KGXYzu/z0PcKaluPg8SmStXbucAIIvQ=",
+        "owner": "coq",
+        "repo": "vscoq",
+        "rev": "50b41ad391004bfe5e93c3eda1e1e695445af45f",
+        "type": "github"
+      },
+      "original": {
+        "owner": "coq",
+        "repo": "vscoq",
         "type": "github"
       }
     }
